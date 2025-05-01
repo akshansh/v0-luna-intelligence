@@ -2,515 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-nunito-sans: "Nunito Sans", sans-serif;
-  --font-fraunces: "Fraunces", serif;
-
-  --luna-navy: 13, 27, 42; /* #0D1B2A */
-  --glacier-teal: 23, 162, 184; /* #17A2B8 */
-  --mountain-snow: 248, 250, 252; /* #F8FAFC */
-
-  --background: var(--luna-navy);
-  --foreground: var(--mountain-snow);
-
-  --card: 255, 255, 255;
-  --card-foreground: var(--luna-navy);
-
-  --popover: var(--luna-navy);
-  --popover-foreground: var(--mountain-snow);
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
 
-  --primary: var(--glacier-teal);
-  --primary-foreground: var(--mountain-snow);
-
-  --secondary: var(--mountain-snow);
-  --secondary-foreground: var(--luna-navy);
-
-  --muted: 217, 217, 217;
-  --muted-foreground: 113, 113, 122;
-
-  --accent: var(--glacier-teal);
-  --accent-foreground: var(--mountain-snow);
-
-  --destructive: 239, 68, 68;
-  --destructive-foreground: var(--mountain-snow);
-
-  --border: 228, 228, 231;
-  --input: 228, 228, 231;
-  --ring: var(--glacier-teal);
-
-  --radius: 0.5rem;
-
-  /* Time-based colors */
-  --dawn-color: 94, 234, 212; /* #5EEAD4 */
-  --day-color: 23, 162, 184; /* #17A2B8 */
-  --dusk-color: 14, 116, 144; /* #0E7490 */
-  --night-color: 15, 118, 110; /* #0F766E */
-}
-
-.dark {
-  --background: var(--luna-navy);
-  --foreground: var(--mountain-snow);
-
-  --card: 39, 39, 42;
-  --card-foreground: var(--mountain-snow);
-
-  --popover: 24, 24, 27;
-  --popover-foreground: var(--mountain-snow);
-
-  --primary: var(--glacier-teal);
-  --primary-foreground: 39, 39, 42;
-
-  --secondary: 39, 39, 42;
-  --secondary-foreground: var(--mountain-snow);
-
-  --muted: 39, 39, 42;
-  --muted-foreground: 161, 161, 170;
-
-  --accent: 39, 39, 42;
-  --accent-foreground: var(--mountain-snow);
-
-  --destructive: 127, 29, 29;
-  --destructive-foreground: var(--mountain-snow);
-
-  --border: 39, 39, 42;
-  --input: 39, 39, 42;
-  --ring: var(--glacier-teal);
-}
-
-/* ---------- DAWN THEME ---------- */
-.theme-dawn {
-  --time-primary: var(--dawn-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.8;
-
-  /* Theme backgrounds */
-  --bg-gradient-start: 211, 233, 245; /* Soft morning blue */
-  --bg-gradient-end: 254, 243, 229; /* Warm sunrise glow */
-  --bg-overlay: 13, 27, 42, 0.3; /* Light navy overlay */
-  --bg-card: 255, 255, 255, 0.1;
-
-  /* UI element backgrounds */
-  --topography-primary: rgba(94, 234, 212, 0.12);
-  --topography-secondary: rgba(14, 116, 144, 0.08);
-  --mountain-shadow: rgba(23, 162, 184, 0.6);
-  --conversation-bg: linear-gradient(to bottom, rgba(211, 233, 245, 0.15), rgba(254, 243, 229, 0.2));
-  --conversation-border: rgba(94, 234, 212, 0.2);
-  --card-bg: rgba(255, 255, 255, 0.15);
-  --input-bg: rgba(255, 255, 255, 0.2);
-  --sidebar-bg: linear-gradient(to bottom, rgba(13, 27, 42, 0.6), rgba(13, 27, 42, 0.8));
-
-  /* Text colors */
-  --text-primary: 15, 23, 42; /* Dark text for light backgrounds */
-  --text-secondary: 51, 65, 85; /* Medium dark text */
-  --text-muted: 100, 116, 139; /* Muted text */
-  --text-light: 248, 250, 252; /* Light text for dark backgrounds */
-
-  /* Text on content background */
-  --text-on-background: 15, 23, 42; /* Dark text for light backgrounds */
-  --text-on-background-muted: 51, 65, 85; /* Muted text on light backgrounds */
-
-  /* Text on card/container background */
-  --text-on-card: 15, 23, 42; /* Dark text for light card backgrounds */
-  --text-on-card-muted: 71, 85, 105; /* Muted text on light card backgrounds */
-
-  /* Text on sidebar/header background */
-  --text-on-sidebar: 255, 255, 255; /* White text on dark sidebar/header */
-  --text-on-sidebar-muted: 226, 232, 240; /* Muted text on dark sidebar/header */
-
-  /* Button colors */
-  --button-primary: 94, 234, 212;
-  --button-secondary: 14, 116, 144;
-  --button-text: 255, 255, 255;
-  --button-muted-bg: rgba(255, 255, 255, 0.15);
-  --button-muted-text: rgba(248, 250, 252, 0.7);
-
-  /* Functional colors */
-  --border-color: 226, 232, 240, 0.3;
-  --hover-bg: rgba(255, 255, 255, 0.1);
-  --active-bg: rgba(255, 255, 255, 0.15);
-  --icon-color: 15, 23, 42; /* Default icon color */
-  --icon-muted: 71, 85, 105; /* Muted icon color */
-  --icon-on-dark: 255, 255, 255; /* Icon color on dark backgrounds */
-  --highlight: 94, 234, 212, 0.2; /* Highlight color */
-}
-
-/* Early dawn - transitional between night and dawn */
-.theme-early-dawn {
-  --time-primary: var(--dawn-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.8;
-  --text-primary: 226, 232, 240; /* Lighter text - still more night than dawn */
-  --text-secondary: 203, 213, 225;
-  --text-muted: 148, 163, 184;
-  --text-on-background: 226, 232, 240;
-  --text-on-background-muted: 148, 163, 184;
-  --text-on-card: 226, 232, 240;
-  --text-on-card-muted: 148, 163, 184;
-  --bg-overlay: 13, 27, 42, 0.5; /* Stronger overlay - still dark */
-  --card-bg: rgba(255, 255, 255, 0.08);
-  --input-bg: rgba(255, 255, 255, 0.1);
-}
-
-/* Mid dawn - balanced between night and day */
-.theme-mid-dawn {
-  --time-primary: var(--dawn-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.8;
-  --text-primary: 226, 232, 240; /* Still light text on darker backgrounds */
-  --text-on-background: 226, 232, 240;
-  --icon-color: 226, 232, 240;
-}
-
-/* Late dawn - transitioning to day */
-.theme-late-dawn {
-  --time-primary: var(--dawn-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.8;
-  /* Default values from theme-dawn work well for late dawn */
-}
-
-/* ---------- DAY THEME ---------- */
-.theme-day {
-  --time-primary: var(--day-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.7;
-
-  /* Theme backgrounds */
-  --bg-gradient-start: 224, 242, 254; /* Bright sky blue */
-  --bg-gradient-end: 249, 250, 251; /* Crisp white clouds */
-  --bg-overlay: 13, 27, 42, 0.2; /* Very light navy overlay */
-  --bg-card: 255, 255, 255, 0.15;
-
-  /* UI element backgrounds */
-  --topography-primary: rgba(23, 162, 184, 0.08);
-  --topography-secondary: rgba(14, 116, 144, 0.05);
-  --mountain-shadow: rgba(23, 162, 184, 0.5);
-  --conversation-bg: linear-gradient(to bottom, rgba(224, 242, 254, 0.1), rgba(249, 250, 251, 0.15));
-  --conversation-border: rgba(23, 162, 184, 0.15);
-  --card-bg: rgba(255, 255, 255, 0.25);
-  --input-bg: rgba(255, 255, 255, 0.4);
-  --sidebar-bg: linear-gradient(to bottom, rgba(13, 27, 42, 0.4), rgba(13, 27, 42, 0.6));
-
-  /* Text colors */
-  --text-primary: 15, 23, 42; /* Dark text for light backgrounds */
-  --text-secondary: 51, 65, 85; /* Medium dark text */
-  --text-muted: 100, 116, 139; /* Muted text */
-  --text-light: 248, 250, 252; /* Light text for dark backgrounds */
-
-  /* Text on content background */
-  --text-on-background: 15, 23, 42; /* Dark text for light backgrounds */
-  --text-on-background-muted: 51, 65, 85; /* Muted text on light backgrounds */
-
-  /* Text on card/container background */
-  --text-on-card: 15, 23, 42; /* Dark text for light card backgrounds */
-  --text-on-card-muted: 71, 85, 105; /* Muted text on light card backgrounds */
-
-  /* Text on sidebar/header background */
-  --text-on-sidebar: 255, 255, 255; /* White text on dark sidebar/header */
-  --text-on-sidebar-muted: 226, 232, 240; /* Muted text on dark sidebar/header */
-
-  /* Button colors */
-  --button-primary: 23, 162, 184;
-  --button-secondary: 14, 116, 144;
-  --button-text: 255, 255, 255;
-  --button-muted-bg: rgba(255, 255, 255, 0.2);
-  --button-muted-text: rgba(15, 23, 42, 0.7);
-
-  /* Functional colors */
-  --border-color: 15, 23, 42, 0.1;
-  --hover-bg: rgba(0, 0, 0, 0.05);
-  --active-bg: rgba(0, 0, 0, 0.1);
-  --icon-color: 15, 23, 42; /* Default icon color */
-  --icon-muted: 71, 85, 105; /* Muted icon color */
-  --icon-on-dark: 255, 255, 255; /* Icon color on dark backgrounds */
-  --highlight: 23, 162, 184, 0.2; /* Highlight color */
-}
-
-/* ---------- DUSK THEME ---------- */
-.theme-dusk {
-  --time-primary: var(--dusk-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 241, 245, 249;
-  --time-bg-opacity: 0.8;
-
-  /* Theme backgrounds */
-  --bg-gradient-start: 254, 202, 202; /* Sunset pink */
-  --bg-gradient-end: 254, 240, 138; /* Golden sunset glow */
-  --bg-overlay: 13, 27, 42, 0.4; /* Medium navy overlay */
-  --bg-card: 255, 255, 255, 0.1;
-
-  /* UI element backgrounds */
-  --topography-primary: rgba(14, 116, 144, 0.12);
-  --topography-secondary: rgba(19, 78, 74, 0.08);
-  --mountain-shadow: rgba(14, 116, 144, 0.7);
-  --conversation-bg: linear-gradient(to bottom, rgba(254, 202, 202, 0.1), rgba(254, 240, 138, 0.15));
-  --conversation-border: rgba(14, 116, 144, 0.2);
-  --card-bg: rgba(255, 255, 255, 0.15);
-  --input-bg: rgba(255, 255, 255, 0.2);
-  --sidebar-bg: linear-gradient(to bottom, rgba(13, 27, 42, 0.5), rgba(13, 27, 42, 0.7));
-
-  /* Text colors */
-  --text-primary: 15, 23, 42; /* Dark text for light backgrounds */
-  --text-secondary: 51, 65, 85; /* Medium dark text */
-  --text-muted: 100, 116, 139; /* Muted text */
-  --text-light: 248, 250, 252; /* Light text for dark backgrounds */
-
-  /* Text on content background */
-  --text-on-background: 30, 41, 59; /* Dark text for light backgrounds */
-  --text-on-background-muted: 51, 65, 85; /* Muted text on light backgrounds */
-
-  /* Text on card/container background */
-  --text-on-card: 15, 23, 42; /* Dark text for light card backgrounds */
-  --text-on-card-muted: 71, 85, 105; /* Muted text on light card backgrounds */
-
-  /* Text on sidebar/header background */
-  --text-on-sidebar: 255, 255, 255; /* White text on dark sidebar/header */
-  --text-on-sidebar-muted: 226, 232, 240; /* Muted text on dark sidebar/header */
-
-  /* Button colors */
-  --button-primary: 14, 116, 144;
-  --button-secondary: 19, 78, 74;
-  --button-text: 255, 255, 255;
-  --button-muted-bg: rgba(255, 255, 255, 0.15);
-  --button-muted-text: rgba(248, 250, 252, 0.7);
-
-  /* Functional colors */
-  --border-color: 226, 232, 240, 0.2;
-  --hover-bg: rgba(255, 255, 255, 0.1);
-  --active-bg: rgba(255, 255, 255, 0.15);
-  --icon-color: 15, 23, 42; /* Default icon color */
-  --icon-muted: 71, 85, 105; /* Muted icon color */
-  --icon-on-dark: 255, 255, 255; /* Icon color on dark backgrounds */
-  --highlight: 14, 116, 144, 0.2; /* Highlight color */
-}
-
-/* Early dusk - transitioning from day */
-.theme-early-dusk {
-  --time-primary: var(--dusk-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 241, 245, 249;
-  --time-bg-opacity: 0.8;
-  /* Early dusk uses default dusk values but with daylight text colors */
-  --text-on-background: 15, 23, 42;
-  --text-on-background-muted: 51, 65, 85;
-  --icon-color: 15, 23, 42;
-}
-
-/* Mid dusk - balanced between day and night */
-.theme-mid-dusk {
-  --time-primary: var(--dusk-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 241, 245, 249;
-  --time-bg-opacity: 0.8;
-  /* Mid dusk has stronger text contrast to handle the transitional lighting */
-  --text-on-background: 15, 23, 42;
-  --text-on-background-muted: 51, 65, 85;
-  --text-on-card: 226, 232, 240;
-  --text-on-card-muted: 148, 163, 184;
-  --card-bg: rgba(30, 41, 59, 0.7); /* Darker cards for better text contrast */
-  --input-bg: rgba(30, 41, 59, 0.6);
-  --icon-color: 226, 232, 240;
-}
-
-/* Late dusk - transitioning to night */
-.theme-late-dusk {
-  --time-primary: var(--dusk-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 241, 245, 249;
-  --time-bg-opacity: 0.8;
-  --text-primary: 226, 232, 240; /* Light text for darker backgrounds */
-  --text-secondary: 203, 213, 225;
-  --text-muted: 148, 163, 184;
-  --text-on-background: 226, 232, 240;
-  --text-on-background-muted: 148, 163, 184;
-  --text-on-card: 226, 232, 240;
-  --text-on-card-muted: 148, 163, 184;
-  --bg-overlay: 13, 27, 42, 0.6; /* Stronger overlay - getting darker */
-  --card-bg: rgba(30, 41, 59, 0.8);
-  --input-bg: rgba(30, 41, 59, 0.7);
-  --icon-color: 226, 232, 240;
-}
-
-/* ---------- NIGHT THEME ---------- */
-.theme-night {
-  --time-primary: var(--night-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 226, 232, 240;
-  --time-bg-opacity: 0.9;
-
-  /* Theme backgrounds */
-  --bg-gradient-start: 30, 41, 59; /* Deep blue night */
-  --bg-gradient-end: 15, 23, 42; /* Deeper night blue */
-  --bg-overlay: 13, 27, 42, 0.7; /* Heavy navy overlay */
-  --bg-card: 30, 41, 59, 0.4;
-
-  /* UI element backgrounds */
-  --topography-primary: rgba(15, 118, 110, 0.15);
-  --topography-secondary: rgba(19, 78, 74, 0.1);
-  --mountain-shadow: rgba(15, 118, 110, 0.7);
-  --conversation-bg: linear-gradient(to bottom, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.5));
-  --conversation-border: rgba(15, 118, 110, 0.25);
-  --card-bg: rgba(30, 41, 59, 0.5);
-  --input-bg: rgba(30, 41, 59, 0.4);
-  --sidebar-bg: linear-gradient(to bottom, rgba(13, 27, 42, 0.75), rgba(13, 27, 42, 0.9));
-
-  /* Text colors */
-  --text-primary: 248, 250, 252; /* Light text for dark backgrounds */
-  --text-secondary: 226, 232, 240; /* Medium light text */
-  --text-muted: 203, 213, 225; /* Muted light text */
-  --text-light: 248, 250, 252; /* Light text for dark backgrounds */
-
-  /* Text on content background */
-  --text-on-background: 248, 250, 252; /* Light text for dark backgrounds */
-  --text-on-background-muted: 203, 213, 225; /* Muted light text on dark backgrounds */
-
-  /* Text on card/container background */
-  --text-on-card: 248, 250, 252; /* Light text for dark card backgrounds */
-  --text-on-card-muted: 203, 213, 225; /* Muted light text on dark card backgrounds */
-
-  /* Text on sidebar/header background */
-  --text-on-sidebar: 255, 255, 255; /* White text on dark sidebar/header */
-  --text-on-sidebar-muted: 226, 232, 240; /* Muted text on dark sidebar/header */
-
-  /* Button colors */
-  --button-primary: 15, 118, 110;
-  --button-secondary: 19, 78, 74;
-  --button-text: 255, 255, 255;
-  --button-muted-bg: rgba(255, 255, 255, 0.1);
-  --button-muted-text: rgba(248, 250, 252, 0.7);
-
-  /* Functional colors */
-  --border-color: 255, 255, 255, 0.1;
-  --hover-bg: rgba(255, 255, 255, 0.05);
-  --active-bg: rgba(255, 255, 255, 0.1);
-  --icon-color: 248, 250, 252; /* Default icon color */
-  --icon-muted: 203, 213, 225; /* Muted icon color */
-  --icon-on-dark: 255, 255, 255; /* Icon color on dark backgrounds */
-  --highlight: 15, 118, 110, 0.2; /* Highlight color */
-}
-
-/* Time segment specific theme classes */
-.theme-early-dawn {
-  --time-primary: var(--dawn-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.8;
-  --text-primary: 226, 232, 240;
-  --text-secondary: 203, 213, 225;
-  --text-muted: 148, 163, 184;
-  --text-on-background: 226, 232, 240;
-  --text-on-background-muted: 148, 163, 184;
-  --text-on-card: 226, 232, 240;
-  --text-on-card-muted: 148, 163, 184;
-  --bg-overlay: 13, 27, 42, 0.5;
-  --card-bg: rgba(255, 255, 255, 0.08);
-  --input-bg: rgba(255, 255, 255, 0.1);
-}
-
-.theme-mid-dawn {
-  --time-primary: var(--dawn-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.8;
-  --text-primary: 226, 232, 240;
-  --text-on-background: 226, 232, 240;
-  --icon-color: 226, 232, 240;
-}
-
-.theme-late-dawn {
-  --time-primary: var(--dawn-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.8;
-}
-
-.theme-early-day {
-  --time-primary: var(--day-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.7;
-}
-
-.theme-mid-day {
-  --time-primary: var(--day-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.7;
-}
-
-.theme-late-day {
-  --time-primary: var(--day-color);
-  --time-secondary: 14, 116, 144;
-  --time-accent: 248, 250, 252;
-  --time-bg-opacity: 0.7;
-}
-
-.theme-early-dusk {
-  --time-primary: var(--dusk-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 241, 245, 249;
-  --time-bg-opacity: 0.8;
-  --text-on-background: 15, 23, 42;
-  --text-on-background-muted: 51, 65, 85;
-  --icon-color: 15, 23, 42;
-}
-
-.theme-mid-dusk {
-  --time-primary: var(--dusk-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 241, 245, 249;
-  --time-bg-opacity: 0.8;
-  --text-on-background: 15, 23, 42;
-  --text-on-background-muted: 51, 65, 85;
-  --text-on-card: 226, 232, 240;
-  --text-on-card-muted: 148, 163, 184;
-  --card-bg: rgba(30, 41, 59, 0.7);
-  --input-bg: rgba(30, 41, 59, 0.6);
-  --icon-color: 226, 232, 240;
-}
-
-.theme-late-dusk {
-  --time-primary: var(--dusk-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 241, 245, 249;
-  --time-bg-opacity: 0.8;
-  --text-primary: 226, 232, 240;
-  --text-secondary: 203, 213, 225;
-  --text-muted: 148, 163, 184;
-  --text-on-background: 226, 232, 240;
-  --text-on-background-muted: 148, 163, 184;
-  --text-on-card: 226, 232, 240;
-  --text-on-card-muted: 148, 163, 184;
-  --bg-overlay: 13, 27, 42, 0.6;
-  --card-bg: rgba(30, 41, 59, 0.8);
-  --input-bg: rgba(30, 41, 59, 0.7);
-  --icon-color: 226, 232, 240;
-}
-
-.theme-early-night {
-  --time-primary: var(--night-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 226, 232, 240;
-  --time-bg-opacity: 0.9;
-}
-
-.theme-mid-night {
-  --time-primary: var(--night-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 226, 232, 240;
-  --time-bg-opacity: 0.9;
-}
-
-.theme-late-night {
-  --time-primary: var(--night-color);
-  --time-secondary: 19, 78, 74;
-  --time-accent: 226, 232, 240;
-  --time-bg-opacity: 0.9;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    /* Luna Intelligence Colors */
+    --luna-navy: 213 52% 11%;
+    --mountain-snow: 210 40% 98%;
+    --glacier-teal: 189 77% 41%;
+    --blood-sunset: 0 84% 60%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
 }
 
 @layer base {
@@ -521,222 +80,12 @@
     @apply bg-background text-foreground;
   }
 
-  .font-heading {
-    font-family: var(--font-fraunces);
+  /* Custom font classes */
+  .font-fraunces {
+    font-family: var(--font-fraunces), serif;
   }
 
-  .font-sans {
-    font-family: var(--font-nunito-sans);
+  .font-nunito {
+    font-family: var(--font-nunito-sans), sans-serif;
   }
-}
-
-/* Custom cursor */
-@media (min-width: 768px) {
-  body {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><path d='M8.5 14.5c1.5 0 2.5-1 2.5-2.5S10 9.5 8.5 9.5 6 10.5 6 12s1 2.5 2.5 2.5zm7 0c1.5 0 2.5-1 2.5-2.5s-1-2.5-2.5-2.5-2.5 1-2.5 2.5 1 2.5 2.5 2.5zm-10 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm13 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-6.5 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z'/></svg>")
-      0 0, auto;
-  }
-
-  a,
-  button,
-  [role="button"] {
-    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><path d='M8.5 14.5c1.5 0 2.5-1 2.5-2.5S10 9.5 8.5 9.5 6 10.5 6 12s1 2.5 2.5 2.5zm7 0c1.5 0 2.5-1 2.5-2.5s-1-2.5-2.5-2.5-2.5 1-2.5 2.5 1 2.5 2.5 2.5zm-10 3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm13 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-6.5 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z'/></svg>")
-      0 0, pointer;
-  }
-}
-
-/* Custom scrollbar */
-.scrollbar-thin::-webkit-scrollbar {
-  width: 6px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: rgba(23, 162, 184, 0.3);
-  border-radius: 3px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(23, 162, 184, 0.5);
-}
-
-/* Custom animations */
-@keyframes blink {
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(0.1);
-  }
-}
-
-.animate-blink {
-  animation: blink 0.2s ease-in-out;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.15;
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 1s forwards;
-}
-
-/* Snow particle effect for buttons */
-.group-hover\:animate-pulse:hover {
-  position: relative;
-}
-
-.group-hover\:animate-pulse:hover::after {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  background: radial-gradient(circle, rgba(23, 162, 184, 0.2) 0%, rgba(23, 162, 184, 0) 70%);
-  border-radius: 50%;
-  z-index: -1;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.3;
-  }
-  100% {
-    transform: scale(0.95);
-    opacity: 0.7;
-  }
-}
-
-/* Time slider styles */
-.time-slider-track {
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(var(--text-on-background), 0.1);
-}
-
-.time-slider-range {
-  height: 4px;
-  border-radius: 2px;
-  background: rgb(var(--time-primary));
-}
-
-.time-slider-thumb {
-  width: 16px;
-  height: 16px;
-  border-radius: 8px;
-  background: rgb(var(--time-primary));
-  border: 2px solid rgb(var(--time-accent));
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-}
-
-/* Time transition effects */
-.time-transition {
-  transition: background-color 1s ease, color 1s ease, border-color 1s ease, opacity 1s ease, background 1s ease;
-}
-
-/* Text color utility classes */
-.text-adaptive {
-  color: rgb(var(--text-on-background));
-}
-
-.text-adaptive-secondary {
-  color: rgb(var(--text-on-background-muted));
-}
-
-.text-adaptive-card {
-  color: rgb(var(--text-on-card));
-}
-
-.text-adaptive-card-muted {
-  color: rgb(var(--text-on-card-muted));
-}
-
-.text-adaptive-sidebar {
-  color: rgb(var(--text-on-sidebar));
-}
-
-.text-adaptive-sidebar-muted {
-  color: rgb(var(--text-on-sidebar-muted));
-}
-
-/* Icon color utility classes */
-.icon-adaptive {
-  color: rgb(var(--icon-color));
-}
-
-.icon-adaptive-muted {
-  color: rgb(var(--icon-muted));
-}
-
-.icon-adaptive-dark {
-  color: rgb(var(--icon-on-dark));
-}
-
-/* Background utility classes */
-.bg-adaptive-card {
-  background-color: var(--card-bg);
-}
-
-.bg-adaptive-input {
-  background-color: var(--input-bg);
-}
-
-.bg-adaptive-hover:hover {
-  background-color: var(--hover-bg);
-}
-
-.bg-adaptive-active:active {
-  background-color: var(--active-bg);
-}
-
-/* Border utility classes */
-.border-adaptive {
-  border-color: rgba(var(--border-color));
-}
-
-/* Button utility classes */
-.btn-time-primary {
-  background-color: rgb(var(--button-primary));
-  color: rgb(var(--button-text));
-}
-
-.btn-time-primary:hover {
-  background-color: rgba(var(--button-primary), 0.9);
-}
-
-.btn-time-secondary {
-  background-color: rgb(var(--button-secondary));
-  color: rgb(var(--button-text));
-}
-
-.btn-time-secondary:hover {
-  background-color: rgba(var(--button-secondary), 0.9);
-}
-
-.btn-time-muted {
-  background-color: var(--button-muted-bg);
-  color: var(--button-muted-text);
-}
-
-.btn-time-muted:hover {
-  background-color: var(--hover-bg);
-  color: rgb(var(--text-on-background));
 }

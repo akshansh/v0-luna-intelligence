@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss"
-
 const config = {
   darkMode: ["class"],
   content: [
@@ -53,16 +52,15 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Luna Intelligence Colors
-        "luna-navy": "#0D1B2A",
-        "mountain-snow": "#F8FAFC",
-        "glacier-teal": "#17A2B8",
-        "blood-sunset": "#E53E3E",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: ["var(--font-nunito-sans)"],
+        heading: ["var(--font-fraunces)"],
       },
       keyframes: {
         "accordion-down": {

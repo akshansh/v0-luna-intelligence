@@ -1,10 +1,12 @@
 import type React from "react"
-import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Nunito_Sans, Fraunces } from "next/font/google"
-import { cn } from "@/lib/utils"
+import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { TimeProvider } from "@/components/time-provider"
+import { TimeThemeWrapper } from "@/components/time-theme-wrapper"
 
-const nunito = Nunito_Sans({
+const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
   variable: "--font-nunito-sans",
 })
@@ -15,8 +17,8 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: "Luna Attendance",
-  description: "Employee attendance management system by Luna Intelligence",
+  title: "Luna Intelligence | Digital Wilderness",
+  description: "Create AI Masterminds from your unstructured data with Luna Intelligence",
     generator: 'v0.dev'
 }
 
@@ -27,7 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen font-nunito antialiased", nunito.variable, fraunces.variable)}>{children}</body>
+      <body className={`${nunitoSans.variable} ${fraunces.variable} font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <TimeProvider>
+            <TimeThemeWrapper>{children}</TimeThemeWrapper>
+          </TimeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

@@ -3,22 +3,26 @@ import type { Metadata } from "next"
 import { Nunito_Sans, Fraunces } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { TimeProvider } from "@/components/time-provider"
-import { TimeThemeWrapper } from "@/components/time-theme-wrapper"
 
-const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
-  variable: "--font-nunito-sans",
-})
-
+// Load Fraunces font
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+})
+
+// Load Nunito Sans font
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  variable: "--font-nunito-sans",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 })
 
 export const metadata: Metadata = {
-  title: "Luna Intelligence | Digital Wilderness",
-  description: "Create AI Masterminds from your unstructured data with Luna Intelligence",
+  title: "Luna Intelligence",
+  description: "AI-powered assistant platform",
     generator: 'v0.dev'
 }
 
@@ -29,11 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${nunitoSans.variable} ${fraunces.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <TimeProvider>
-            <TimeThemeWrapper>{children}</TimeThemeWrapper>
-          </TimeProvider>
+      <body className={`${fraunces.variable} ${nunitoSans.variable}`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
         </ThemeProvider>
       </body>
     </html>

@@ -1,13 +1,14 @@
 import type { Config } from "tailwindcss"
-
-const config: Config = {
+const config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -18,12 +19,6 @@ const config: Config = {
     },
     extend: {
       colors: {
-        "luna-navy": "#0D1B2A",
-        "mountain-snow": "#F8FAFC",
-        "glacier-teal": "#17A2B8",
-        "blood-sunset": "#E63946",
-        "alpine-stone": "#415A77",
-        "frost-silver": "#E0E1DD",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -58,14 +53,14 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
-      fontFamily: {
-        fraunces: ["var(--font-fraunces)", "serif"],
-        "nunito-sans": ["var(--font-nunito-sans)", "sans-serif"],
-      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: ["var(--font-nunito-sans)"],
+        heading: ["var(--font-fraunces)"],
       },
       keyframes: {
         "accordion-down": {
@@ -84,6 +79,6 @@ const config: Config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+} satisfies Config
 
 export default config
